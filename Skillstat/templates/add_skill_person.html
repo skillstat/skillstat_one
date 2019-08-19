@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Hello, world!</title>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div>
+    <form action="{% url 'SkillPer:add' %}" method="post">
+        <input type="hidden" id="user-id" name="userId" value="001">
+        <input type="hidden" id="level" name="level">
+        <input type="hidden" id="category" name="category">
+        <div class="col-md-4 mb-3">
+            <label for="validationServer01">技能名</label>
+            <input type="text" name="skillName" class="form-control" id="validationServer01" placeholder="请输入技能名" required>
+        </div>
+        <div>技能等级</div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle skill-level" data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                请选择
+            </button>
+            <div class="dropdown-menu level">
+                <a class="dropdown-item">了解</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item">掌握</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item">熟练</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item">精通</a>
+            </div>
+        </div>
+        <div>技能类别</div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle skill-category" data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                请选择
+            </button>
+            <div class="dropdown-menu category">
+                <a class="dropdown-item">前端</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item">后端</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item">测试</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item">部署</a>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info">提交</button>
+    </form>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/add_skill_person.js' %}"></script>
+</body>
+</html>

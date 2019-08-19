@@ -1,0 +1,9 @@
+<td>{{ forloop.counter }}</td>
+<td>{{ skill.skill_name }}</td>
+<td>{{ skill.skill_level }}</td>
+<td>{{ skill.skill_category }}</td>
+<td>{{ skill.time|date:'Y/m/d' }}</td>
+<td class="action">
+    <button class="btn btn-light delete" index="{{ skill.id }}">删除</button>
+    <button class="btn btn-info edit" index="{{ skill.id }}">编辑</button>
+</td>
