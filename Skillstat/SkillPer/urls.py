@@ -7,5 +7,5 @@ urlpatterns = [
     path('add/', views.add_skill, name='add'),
     path('delete/', views.delete_item, name='delete'),
     path('edit/', views.edit_item, name='edit'),
-    # path('test/',views.test,name='test')
+    # path('test/', views.test, name='test')
 ]

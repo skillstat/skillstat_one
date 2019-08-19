@@ -1,5 +1,4 @@
 {% extends 'base/base.html' %}
-{% load my_filter %}
 {% block header %}
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -21,29 +20,6 @@
             </thead>
             <tbody>
             {% for skill in skills %}
-                {% if skill|type_judge %}     {# 判断返回的数据是不是元祖 #}
-                    {% if skill.3 == '掌握' %} {# 判断返回的熟练度是什么 #}
-                        <tr class="table-success">
-                            {% include 'skill_list().html' %}
-                        </tr>
-                    {% elif skill.3 == '了解' %}
-                        <tr class="table-info">
-                            {% include 'skill_list().html' %}
-                        </tr>
-                    {% elif skill.3 == '熟练' %}
-                        <tr class="table-warning">
-                            {% include 'skill_list().html' %}
-                        </tr>
-                    {% elif skill.3 == '精通' %}
-                        <tr class="table-danger">
-                            {% include 'skill_list().html' %}
-                        </tr>
-                    {% else %}
-                        <tr class="table-secondary">
-                            {% include 'skill_list().html' %}
-                        </tr>
-                    {% endif %}
-                {% else %}
                     {% if skill.skill_level == '掌握' %}
                         <tr class="table-success">
                             {% include 'skill_list{}.html' %}
@@ -65,7 +41,6 @@
                             {% include 'skill_list{}.html' %}
                         </tr>
                     {% endif %}
-                {% endif %}
             {% endfor %}
             </tbody>
         </table>
@@ -191,7 +166,7 @@
                 <button type='button' class="btn btn-light cancel">取消</button>
             </div>
         </div>
-        {#        <button class="test">测试</button>#}
+{#                <button class="test">测试</button>#}
     </div>
 {% endblock %}
 {% block footer %}

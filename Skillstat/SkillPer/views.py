@@ -11,7 +11,7 @@ def per_list(request):
     cursor = connection.cursor()
     cursor.execute(
         "select * from skill_person  order by FIELD(`skill_level`,'陌生','了解','掌握','熟练','精通')")
-    skills = cursor.fetchall()
+    skills = dict_fetchall(cursor)
     # skills = SkillPer.objects.all().order_by('skill_level').values()
     context = {
         'skills': skills
@@ -57,6 +57,12 @@ def edit_item(request):
         skill.save()
         return HttpResponse('OK')
 
+
+def dict_fetchall(cursor):
+    desc = cursor.description
+    return [
+        dict(zip([col[0] for col in desc], row))
+        for row in cursor.fetchall()]
 # def test(request):
 #     skills = SkillPer.objects.all().order_by('skill_level').values()
 #     aaa = list(skills)
