@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.css' %}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'less/skill-person.css' %}"/>
     {% block header %}
     {% endblock %}
 </head>
@@ -200,20 +202,20 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item left-skill-list">
-                                <a href="" class="nav-link">
+                            <li class="nav-item">
+                                <a href="{% url 'SkillPer:list' %}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>技能矩阵</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'const/' %}" class="nav-link">
+                                <a href="{% url 'SkillPer:contrast' %}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>技能对比</p>
                                 </a>
                             </li>
                             <li class="nav-item left-add-skill">
-                                <a  class="nav-link">
+                                <a class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p class="ddd">增加技能</p>
                                 </a>
@@ -226,11 +228,148 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-<div class="content-wrapper">
-    {% block content %}
-    {% endblock %}
-</div>
+    <div class="cover model"></div>
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">{% block title %}{% endblock %}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href=" ">主页</a></li>
+                            <li class="breadcrumb-item active">{% block little-title %}{% endblock %}</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="add-skill col-md-6 col-lg-4 col-10 s-form">
+        <div class="row first">添加新技能</div>
+        <form action="{% url 'SkillPer:add' %}" method="post" id="add-skill">
+            <input type="hidden" id="user-id" name="userId" value="001">
+            <input type="hidden" id="level" name="level">
+            <input type="hidden" id="category" name="category">
+            <div class="row">
+                <div class="d-inline-block left">技能名</div>
+                <div class="d-inline-block input-div">
+                    <input type="text" name="skillName" class="form-control first-input" id="validationServer01"
+                           placeholder="请输入技能名" maxlength="20" required>
+                </div>
+            </div>
+            <div class="reminder name-reminder">*技能名不能为空</div>
 
+            <div class="row">
+                <div class="d-inline-block left">技能等级</div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle skill-level" data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        请选择
+                    </button>
+                    <div class="dropdown-menu level">
+                        <a class="dropdown-item">了解</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">掌握</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">熟练</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">精通</a>
+                    </div>
+                </div>
+            </div>
+            <div class="reminder level-reminder">*请选择技能等级</div>
+
+            <div class="row">
+                <div class="d-inline-block left">技能类别</div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle skill-category"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        请选择
+                    </button>
+                    <div class="dropdown-menu category">
+                        <a class="dropdown-item">前端</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">后端</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">测试</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">部署</a>
+                    </div>
+                </div>
+            </div>
+            <div class="reminder category-reminder">*请选择技能类别</div>
+
+            <div class="row last">
+                <button type="button" class="btn btn-info submit">提交</button>
+                <button class="btn btn-light cancel">取消</button>
+            </div>
+        </form>
+    </div>
+    <div class="edit-skill col-md-6 col-lg-4 col-10 s-form">
+        <div class="row first">编辑技能</div>
+        <div class="skill-id d-none"></div>
+        <div class="skill-index d-none"></div>
+        <div class="row">
+            <div class="d-inline-block left">技能名</div>
+            <div class="d-inline-block input-div">
+                <input type="text" class="form-control first-input" id="validationServer01"
+                       placeholder="请输入技能名" maxlength="20" required>
+            </div>
+        </div>
+        <div class="reminder name-reminder">*技能名不能为空</div>
+        <div class="row">
+            <div class="d-inline-block left">技能等级</div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle skill-level" data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                    请选择
+                </button>
+                <div class="dropdown-menu level">
+                    <a class="dropdown-item">了解</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item">掌握</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item">熟练</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item">精通</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="d-inline-block left">技能类别</div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle skill-category"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                    请选择
+                </button>
+                <div class="dropdown-menu category">
+                    <a class="dropdown-item">前端</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item">后端</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item">测试</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item">部署</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row last">
+            <button type="button" class="btn btn-info confirm">确认</button>
+            <button type='button' class="btn btn-light cancel">取消</button>
+        </div>
+    </div>
     <!-- Content Wrapper. Contains page content -->
     <!--=========================  =========================  =========================  =========================  =========================  ========================= -->
     <!--代码片段1-->

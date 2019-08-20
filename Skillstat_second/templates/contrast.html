@@ -3,9 +3,9 @@
 {% block header %}
     <script src="{% static 'js/echarts.js' %}"></script>
 {% endblock %}
-
+{% block title %}技能对比{% endblock %}
+{% block little-title %}技能对比{% endblock %}
 {% block content %}
-    <div class="content-wrapper">
         <div class="row">
             <div class='col-12'>
                 <div class="card card-success ">
@@ -29,27 +29,23 @@
                 </div>
             </div>
         </div>
-    </div>
 {% endblock %}
-
 {% block footer %}
-        <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
-        <!-- Bootstrap 4 -->
-        <script src="{% static ' plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-        <!-- ChartJS -->
-        <script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
-        <!-- FastClick -->
-        <script src="{% static 'plugins/fastclick/fastclick.js' %}"></script>
-        <!-- AdminLTE App -->
-        <script src="{% static 'js/adminlte.min.js' %}"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="{% static 'js/demo.js' %}"></script>
+    {#        <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>#}
+    {#        <!-- Bootstrap 4 -->#}
+    {#        <script src="{% static ' plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>#}
+    {#        <!-- ChartJS -->#}
+    {#        <script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>#}
+    <!-- FastClick -->
+    {#        <script src="{% static 'plugins/fastclick/fastclick.js' %}"></script>#}
+    {#        <!-- AdminLTE App -->#}
+    {#        <script src="{% static 'js/adminlte.min.js' %}"></script>#}
+    {#        <!-- AdminLTE for demo purposes -->#}
+    {#        <script src="{% static 'js/demo.js' %}"></script>#}
     <!-- page script -->
     <script>
-
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('barChart'));
-
         // 陌生0 了解1 掌握2  熟练3 精通4
         var xAxisData = {{ xAxisData|safe }};
         var customData = {{ customData|safe }};
@@ -57,14 +53,12 @@
         var dataList = {{ dataList|safe }};
         var encodeY = {{ encodeY|safe }};
         {#console.log(xAxisData)#}
-
         function renderItem(params, api) {
             var xValue = api.value(0);
             var currentSeriesIndices = api.currentSeriesIndices();
             var barLayout = api.barLayout({
                 barGap: '30%', barCategoryGap: '20%', count: currentSeriesIndices.length - 1
             });
-
             var points = [];
             for (var i = 0; i < currentSeriesIndices.length; i++) {
                 var seriesIndex = currentSeriesIndices[i];
@@ -79,7 +73,6 @@
                 stroke: api.visual('color'),
                 fill: null
             });
-
             return {
                 type: 'polyline',
                 shape: {
@@ -88,22 +81,18 @@
                 style: style
             };
         }
-
         option = {
             tooltip: {
                 trigger: 'axis',
-
-
                 formatter: function (params) {
                     {#console.log(typeof(params[0].value));#}
-                    if (typeof (params[0].value)==="object"){
-                         var level = params[0].value.slice(1,).map((item) => {
-
+                    if (typeof (params[0].value) === "object") {
+                        var level = params[0].value.slice(1,).map((item) => {
                             switch (item) {
                                 case 0 :
-                                    return level='陌生';
+                                    return level = '陌生';
                                 case 1 || '1':
-                                    return level =  '了解';
+                                    return level = '了解';
                                 case 2 || '2':
                                     return level = '掌握';
                                 case 3 || '3':
@@ -111,54 +100,38 @@
                                 case 4 || '4':
                                     return level = '精通'
                             }
-
-
-
-                    })
-                    }else{
-
-                            switch (params[0].value) {
-                                case 0 ||'0':
-                                    return '陌生';
-                                case 1 || '1':
-                                    return '了解';
-                                case 2 || '2':
-                                    return '掌握';
-                                case 3 || '3':
-                                    return '熟练';
-                                case 4 || '4':
-                                    return '精通'
-                            }
+                        })
+                    } else {
+                        switch (params[0].value) {
+                            case 0 || '0':
+                                return '陌生';
+                            case 1 || '1':
+                                return '了解';
+                            case 2 || '2':
+                                return '掌握';
+                            case 3 || '3':
+                                return '熟练';
+                            case 4 || '4':
+                                return '精通'
+                        }
                     }
-                   ;
+                    ;
                     text = '';
                     for (var i = 0; i < level.length; i++) {
                         text1 = legendData.slice(1,)[i] + ':' + level[i] + '<br/>';
                         text += text1
                     }
                     var res = params[0].name + ':<br/>' + text;
-
                     return res
-
                 },
-
                 trigger: 'axis',
-
                 axisPointer: {
-
                     type: 'line',
-
                     lineStyle: {
-
                         color: 'rgba(255, 255, 255, 0.37)'
-
                     }
-
                 }
-
-
             },
-
             legend: {
                 data: legendData
             },
@@ -174,11 +147,11 @@
             xAxis: {
                 data: xAxisData,
                 axisLabel: {
+                    rotate: 30,
                     textStyle: {
                         fontSize: 15
                     }
                 }
-
                 // nameTextStyle:{fontSize:30}
             },
             yAxis: {
@@ -198,29 +171,17 @@
                     formatter: function (value) {
                         //  console.log(value)
                         var texts = []
-
                         if (value === 0) {
-
                             texts.push('陌生')
-
                         } else if (value === 1) {
-
                             texts.push('了解')
-
                         } else if (value === 2) {
-
                             texts.push('掌握')
-
                         } else if (value === 3) {
-
                             texts.push('熟练')
-
                         } else if (value === 4) {
-
                             texts.push('精通')
                         }
-
-
                         return texts
                     }
                 },
@@ -234,8 +195,6 @@
                         borderWidth: 2,
                         {#show: true,#}
                         {#position: 'insiderRight',#}
-
-
                     }
                 },
                 encode: {
@@ -260,6 +219,10 @@
         };
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
-
+        setTimeout(function () {
+            window.onresize = function () {
+                myChart.resize();
+            }
+        }, 200)
     </script>
 {% endblock %}

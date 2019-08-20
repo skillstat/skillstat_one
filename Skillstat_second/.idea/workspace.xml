@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3db1ab85-d77b-4bc6-a548-3c8b888f9e1b" name="Default Changelist" comment="" />
+    <list default="true" id="3db1ab85-d77b-4bc6-a548-3c8b888f9e1b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SkillPer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/SkillPer/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SkillPer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/SkillPer/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/add_skill_person.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/add_skill_person.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/base.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/less/skill-person.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/less/skill-person.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/less/skill-person.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/less/skill-person.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/less/skill-person.less" beforeDir="false" afterPath="$PROJECT_DIR$/static/less/skill-person.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/constrast.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contrast.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/skill_list_person.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skill_list_person.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/skill_list{}.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skill_list{}.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +53,13 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/static/adminlte" />
     </key>
   </component>
@@ -102,10 +115,22 @@
       <workItem from="1565588002287" duration="35056000" />
       <workItem from="1565767971981" duration="53145000" />
       <workItem from="1566183842595" duration="890000" />
+      <workItem from="1566191487544" duration="12736000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
